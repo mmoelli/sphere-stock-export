@@ -10,4 +10,9 @@ before_script:
   - ./create_config.sh
 script:
   - grunt build
-  - 'node lib/run --projectKey ${SPHERE_PROJECT_KEY} --clientId ${SPHERE_CLIENT_ID} --clientSecret ${SPHERE_CLIENT_SECRET}'
+  - node lib/run --projectKey ${SPHERE_PROJECT_KEY} --clientId ${SPHERE_CLIENT_ID} --clientSecret  ${SPHERE_CLIENT_SECRET}
+env:
+  global:
+  - secure: Ys+VkwWimOBTVZb71TexkA1yaY27a6IqfmmZ77bLIVsAp2Yu6KjtBMJnB5Jc6cvBXRhEbgKyJXELS5Op05pNuqdSGr4sMRjYNKl9lIaa3+2dyyNxrvTLH9K8dXt2jrgYgrhMMieJnYpoL0hvXyeev+atufIWBZb8LRClKEecS0E=
+  - secure: d7KfSUzn3us1SOpDxSUXpl0ux52nPsQnAjcDUOlV40PU/5XR6HemUcTFWmDedSO9kVcy+jESoJSX9IL2ki4NmoEDoQ8Ef0epM5BJT6J4Yc9paZqlz/WSk4BuSBI8IC7OytpCWV+5yOLiwXyI/witzPHTE7YKdT8Kg9ByA+YYobQ=
+  - secure: DUWhE4uJFcKSFlQJunkak3R41Wk7XjSGEv5deucma5OgP5ZKJ6sH2zwpIILXAwQTBcgj16qveumZKqyffTJqJN5wJVfc9Ac4Mn4KJdJDq93lzqB5kGvT8G2G9AzqPlm1F5fxz5PnAFjqGLl3o/q+FwNJA+OR6freUPN9IgqDV1k=
