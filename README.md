@@ -2,9 +2,9 @@
 
 # Stock export
 
-[![NPM](https://nodei.co/npm/sphere-order-export.png?downloads=true)](https://www.npmjs.org/package/sphere-order-export)
+[![NPM](https://nodei.co/npm/sphere-stock-export.png?downloads=true)](https://www.npmjs.org/package/sphere-stock-export)
 
-[![Build Status](https://secure.travis-ci.org/mmoelli/sphere-stock-export.png?branch=master)](http://travis-ci.org/sphereio/sphere-order-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-order-export)
+[![Build Status](https://secure.travis-ci.org/mmoelli/sphere-stock-export.png?branch=master)](http://travis-ci.org/sphereio/sphere-stock-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-stock-export)
 This module allows to export stocks to CSV.
 
 ## Getting started
@@ -13,7 +13,7 @@ This module allows to export stocks to CSV.
 $ npm install -g sphere-stock-export
 
 # output help screen
-$ order-export
+$ stock-export
 ```
 
 ## Usage
