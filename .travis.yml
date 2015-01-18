@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - '0.10'
+branches:
+  except:
+    - latest
+    - production
+before_script:
+  - npm install -g grunt-cli
+  - ./create_config.sh
+script:
+  - grunt build
+  - 'node lib/run --projectKey ${SPHERE_PROJECT_KEY} --clientId ${SPHERE_CLIENT_ID} --clientSecret ${SPHERE_CLIENT_SECRET}'

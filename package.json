@@ -1,0 +1,64 @@
+{
+  "name": "sphere-stock-export",
+  "description": "Export your stock information from SPHERE.IO's inventory into CSV!",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mmoelli/sphere-stock-export",
+  "private": false,
+  "author": {
+    "name": "Martin Möllmann",
+    "email": "martin.moellmann@commercetools.de"
+  },
+  "maintainers": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmoelli/sphere-stock-export.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mmoelli/sphere-stock-export/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/sphereio/sphere-stock-export/blob/master/LICENSE"
+    }
+  ],
+  "bin": {
+    "stock-import": "bin/stock-import"
+  },
+  "main": "lib/run",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt coverage"
+  },
+  "dependencies": {
+    "sphere-node-sdk": "1.2.0",
+    "sphere-node-utils": "0.6.0",
+    "optimist": "0.6.1",
+    "tmp": "0.0.24",
+    "bluebird": "2.3.x",
+    "path": "0.4.9",
+    "underscore": "1.7.0",
+    "csv": "0.3.0",
+    "safe-access": "0.1.0"
+  },
+  "devDependencies": {
+    "grunt": "0.4.4",
+    "grunt-bump": "0.0.13",
+    "grunt-coffeelint": "0.0.8",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-coffee": "0.10.1",
+    "grunt-contrib-concat": "0.4.0",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-shell": "0.6.4",
+    "sphere-coffeelint": "git://github.com/sphereio/sphere-coffeelint.git#master"
+  },
+  "keywords": [
+    "sphere",
+    "sphereio",
+    "stock",
+    "export",
+    "csv"
+  ]
+}
