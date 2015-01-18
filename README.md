@@ -16,6 +16,27 @@ $ npm install -g sphere-stock-export
 $ order-export
 ```
 
+## Usage
+
+General command line options can be seen by simply executing the command `node lib/run`.
+```
+node lib/run
+
+  Usage:     --projectKey <project-key> --clientId <client-id> --clientSecret <client-secret>
+
+  Options:
+
+    --projectKey       your SPHERE.IO project-key                                  [required]
+    --clientId         your OAuth client id for the SPHERE.IO API                  [required]
+    --clientSecret     your OAuth client secret for the SPHERE.IO API              [required]
+    --sphereHost       SPHERE.IO API host to connect to
+    --targetDir        the folder where exported files are saved                   [default: "/Users/martinmollmann/dev/sphere-stock-export/exports"]
+    --useExportTmpDir  whether to use a system tmp folder to store exported files  [default: false]
+    --logLevel         log level for file logging                                  [default: "info"]
+    --logDir           directory to store logs                                     [default: "."]
+    --logSilent        use console to print messages                               [default: false]
+```
+
 ### CSV Format
 Stocks exported in CSV are stored in a single file
 
