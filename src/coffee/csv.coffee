@@ -31,7 +31,6 @@ class CsvMapping
 
   _getValue: (stock, mapping) ->
     value = access stock, mapping
-    return '' unless value
 
     value
 
