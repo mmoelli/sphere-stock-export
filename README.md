@@ -29,8 +29,9 @@ node lib/run
     --projectKey          your SPHERE.IO project-key                                  [required]
     --clientId            your OAuth client id for the SPHERE.IO API                  [required]
     --clientSecret        your OAuth client secret for the SPHERE.IO API              [required]
-    --excludeEmptyStocks  when given, stocks with quantity = 0                        [default: false]
     --sphereHost          SPHERE.IO API host to connect to
+    --excludeEmptyStocks  when given, stocks with quantity = 0                        [default: false]
+    --channelKey          the specific channel you want to export stocks for
     --targetDir           the folder where exported files are saved                   [default: "/exports"]
     --useExportTmpDir     whether to use a system tmp folder to store exported files  [default: false]
     --logLevel            log level for file logging                                  [default: "info"]
