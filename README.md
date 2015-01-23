@@ -4,7 +4,7 @@
 
 [![NPM](https://nodei.co/npm/sphere-stock-export.png?downloads=true)](https://www.npmjs.org/package/sphere-stock-export)
 
-[![Build Status](https://secure.travis-ci.org/mmoelli/sphere-stock-export.png?branch=master)](http://travis-ci.org/sphereio/sphere-stock-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-stock-export)
+[![Build Status](https://secure.travis-ci.org/mmoelli/sphere-stock-export.png?branch=master)](http://travis-ci.org/mmoelli/sphere-stock-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-stock-export)
 This module allows to export stocks to CSV.
 
 ## Getting started
@@ -26,22 +26,23 @@ node lib/run
 
   Options:
 
-    --projectKey       your SPHERE.IO project-key                                  [required]
-    --clientId         your OAuth client id for the SPHERE.IO API                  [required]
-    --clientSecret     your OAuth client secret for the SPHERE.IO API              [required]
-    --sphereHost       SPHERE.IO API host to connect to
-    --targetDir        the folder where exported files are saved                   [default: "/Users/martinmollmann/dev/sphere-stock-export/exports"]
-    --useExportTmpDir  whether to use a system tmp folder to store exported files  [default: false]
-    --logLevel         log level for file logging                                  [default: "info"]
-    --logDir           directory to store logs                                     [default: "."]
-    --logSilent        use console to print messages                               [default: false]
+    --projectKey          your SPHERE.IO project-key                                  [required]
+    --clientId            your OAuth client id for the SPHERE.IO API                  [required]
+    --clientSecret        your OAuth client secret for the SPHERE.IO API              [required]
+    --excludeEmptyStocks  when given, stocks with quantity = 0                        [default: false]
+    --sphereHost          SPHERE.IO API host to connect to
+    --targetDir           the folder where exported files are saved                   [default: "/exports"]
+    --useExportTmpDir     whether to use a system tmp folder to store exported files  [default: false]
+    --logLevel            log level for file logging                                  [default: "info"]
+    --logDir              directory to store logs                                     [default: "."]
+    --logSilent           use console to print messages                               [default: false]
 ```
 
 ### CSV Format
 Stocks exported in CSV are stored in a single file
 
 ```csv
-sku,quantity
+sku,quantity,channel
 ```
 
 ## Contributing
