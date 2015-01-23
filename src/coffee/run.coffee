@@ -14,6 +14,7 @@ argv = require('optimist')
   .describe('clientSecret', 'your OAuth client secret for the SPHERE.IO API')
   .describe('sphereHost', 'SPHERE.IO API host to connect to')
   .option('excludeEmptyStocks', 'whether to skip empty stocks or not')
+  .describe('channelKey', 'when you want to filter stock entries for a special channel key')
   .describe('targetDir', 'the folder where exported files are saved')
   .describe('useExportTmpDir', 'whether to use a system tmp folder to store exported files')
   .describe('logLevel', 'log level for file logging')
@@ -54,7 +55,7 @@ ProjectCredentialsConfig.create()
   options.host = argv.sphereHost if argv.sphereHost
 
   createDir = new CreateDir logger, argv.targetDir, argv.useExportTmpDir
-  fetchStocks = new FetchStocks logger, options
+  fetchStocks = new FetchStocks logger, options, argv.channelKey
   csvMapper = new CsvMapping argv.excludeEmptyStocks
 
   createDir.run()
