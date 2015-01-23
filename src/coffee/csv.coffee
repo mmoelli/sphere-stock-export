@@ -5,14 +5,20 @@ access = require 'safe-access'
 
 class CsvMapping
 
+  constructor: (excludeEmptyStocks) ->
+    @excludeEmptyStocks = excludeEmptyStocks
+    @i = 0
+
   mapStocks: (stocks) ->
     mappings =
       sku: "sku"
       quantity: "quantityOnStock"
+      channel: "supplyChannel"
 
     rows = _.map stocks.body.results, (stock) =>
       @_mapStocks(stock)
 
+    console.log "Export #{@i} stock entries."
     header = _.map mappings, (value, key) =>
       key
 
@@ -23,11 +29,16 @@ class CsvMapping
     mappings =
       sku: "sku"
       quantity: "quantityOnStock"
+      channel: "supplyChannel"
 
     values = _.map mappings, (mapping, name) =>
       @_getValue stock, mapping
 
-    values
+    if @excludeEmptyStocks && values[1] == 0
+      return null
+    else
+      @i++
+      return values
 
   _getValue: (stock, mapping) ->
     value = access stock, mapping

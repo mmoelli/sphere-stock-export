@@ -13,12 +13,14 @@ argv = require('optimist')
   .describe('clientId', 'your OAuth client id for the SPHERE.IO API')
   .describe('clientSecret', 'your OAuth client secret for the SPHERE.IO API')
   .describe('sphereHost', 'SPHERE.IO API host to connect to')
+  .option('excludeEmptyStocks', 'whether to skip empty stocks or not')
   .describe('targetDir', 'the folder where exported files are saved')
   .describe('useExportTmpDir', 'whether to use a system tmp folder to store exported files')
   .describe('logLevel', 'log level for file logging')
   .describe('logDir', 'directory to store logs')
   .describe('logSilent', 'use console to print messages')
   .default('targetDir', path.join(__dirname,'../exports'))
+  .default('excludeEmptyStocks', false)
   .default('useExportTmpDir', false)
   .default('logLevel', 'info')
   .default('logDir', '.')
@@ -53,7 +55,7 @@ ProjectCredentialsConfig.create()
 
   createDir = new CreateDir logger, argv.targetDir, argv.useExportTmpDir
   fetchStocks = new FetchStocks logger, options
-  csvMapper = new CsvMapping
+  csvMapper = new CsvMapping argv.excludeEmptyStocks
 
   createDir.run()
   .then (outputDir) =>
@@ -80,3 +82,7 @@ ProjectCredentialsConfig.create()
     logger.error err, "Problem while creating export directory."
     process.exit(1)
   .done()
+.catch (err) ->
+  logger.error err, "Problem while creating project credentials."
+  process.exit(1)
+.done()

@@ -7,7 +7,7 @@ class FetchStocks
     @client = new SphereClient options
 
   run: ->
-    @client.inventoryEntries.all().fetch()
+    @client.inventoryEntries.all().sort('lastModifiedAt').expand('supplyChannel').fetch()
     .then (result) ->
       Promise.resolve(result)
 
