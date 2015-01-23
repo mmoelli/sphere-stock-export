@@ -12,7 +12,7 @@ class CsvMapping
     mappings =
       sku: "sku"
       quantity: "quantityOnStock"
-      channel: "supplyChannel"
+      channel: "supplyChannel.obj.key"
 
     rows = _.chain(stocks.body.results)
     .map (stock) => @_mapStocks(stock)
@@ -29,7 +29,7 @@ class CsvMapping
     mappings =
       sku: "sku"
       quantity: "quantityOnStock"
-      channel: "supplyChannel"
+      channel: "supplyChannel.obj.key"
 
     _.map mappings, (mapping, name) ->
       access stock, mapping
