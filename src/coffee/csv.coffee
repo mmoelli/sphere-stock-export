@@ -16,15 +16,14 @@ class CsvMapping
 
     rows = _.chain(stocks.body.results)
     .map (stock) => @_mapStocks(stock)
-    .filter (stock) -> not _.isNull(stock)
+    .filter (stock) => if @excludeEmptyStocks then stock[1] isnt 0 else true
     .value()
 
     console.log "Export #{_.size(rows)} stock entries."
     header = _.map mappings, (value, key) =>
       key
 
-    test = @toCSV(header, rows)
-    test
+    @toCSV(header, rows)
 
   _mapStocks: (stock) ->
     mappings =
@@ -32,22 +31,8 @@ class CsvMapping
       quantity: "quantityOnStock"
       channel: "supplyChannel"
 
-    values = _.map mappings, (mapping, name) =>
-      @_getValue stock, mapping
-
-    if @excludeEmptyStocks && values[1] == 0
-      return null
-    else
-      return values
-
-  _getValue: (stock, mapping) ->
-    value = access stock, mapping
-
-    value
-
-  formatChannel = (channel) ->
-    if channel?
-      "#{channel.obj.key}"
+    _.map mappings, (mapping, name) ->
+      access stock, mapping
 
   toCSV: (header, data) ->
     new Promise (resolve, reject) ->
