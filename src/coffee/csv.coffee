@@ -7,7 +7,6 @@ class CsvMapping
 
   constructor: (excludeEmptyStocks) ->
     @excludeEmptyStocks = excludeEmptyStocks
-    @i = 0
 
   mapStocks: (stocks) ->
     mappings =
@@ -15,10 +14,12 @@ class CsvMapping
       quantity: "quantityOnStock"
       channel: "supplyChannel"
 
-    rows = _.map stocks.body.results, (stock) =>
-      @_mapStocks(stock)
+    rows = _.chain(stocks.body.results)
+    .map (stock) => @_mapStocks(stock)
+    .filter (stock) -> not _.isNull(stock)
+    .value()
 
-    console.log "Export #{@i} stock entries."
+    console.log "Export #{_.size(rows)} stock entries."
     header = _.map mappings, (value, key) =>
       key
 
@@ -37,7 +38,6 @@ class CsvMapping
     if @excludeEmptyStocks && values[1] == 0
       return null
     else
-      @i++
       return values
 
   _getValue: (stock, mapping) ->
