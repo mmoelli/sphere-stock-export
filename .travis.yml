@@ -1,18 +1,18 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 branches:
   except:
-    - latest
-    - production
+  - latest
+  - production
 before_script:
-  - npm install -g grunt-cli
-  - ./create_config.sh
+- npm install -g grunt-cli
+- ./create_config.sh
 script:
-  - grunt build
-  - node lib/run --projectKey ${SPHERE_PROJECT_KEY} --clientId ${SPHERE_CLIENT_ID} --clientSecret  ${SPHERE_CLIENT_SECRET}
+- grunt build
+- node lib/run --projectKey ${SPHERE_PROJECT_KEY} --clientId ${SPHERE_CLIENT_ID} --clientSecret ${SPHERE_CLIENT_SECRET}
 env:
   global:
-  - secure: Ys+VkwWimOBTVZb71TexkA1yaY27a6IqfmmZ77bLIVsAp2Yu6KjtBMJnB5Jc6cvBXRhEbgKyJXELS5Op05pNuqdSGr4sMRjYNKl9lIaa3+2dyyNxrvTLH9K8dXt2jrgYgrhMMieJnYpoL0hvXyeev+atufIWBZb8LRClKEecS0E=
-  - secure: d7KfSUzn3us1SOpDxSUXpl0ux52nPsQnAjcDUOlV40PU/5XR6HemUcTFWmDedSO9kVcy+jESoJSX9IL2ki4NmoEDoQ8Ef0epM5BJT6J4Yc9paZqlz/WSk4BuSBI8IC7OytpCWV+5yOLiwXyI/witzPHTE7YKdT8Kg9ByA+YYobQ=
-  - secure: DUWhE4uJFcKSFlQJunkak3R41Wk7XjSGEv5deucma5OgP5ZKJ6sH2zwpIILXAwQTBcgj16qveumZKqyffTJqJN5wJVfc9Ac4Mn4KJdJDq93lzqB5kGvT8G2G9AzqPlm1F5fxz5PnAFjqGLl3o/q+FwNJA+OR6freUPN9IgqDV1k=
+  - secure: rT3ftSKiNflMmqFpbY3oFMmXVBPudWGD4ZS1ZiTGVZtInSfmSjOWrYejTut6fq6ZKFNeWvQ5HssyJ3KupOUBZjJlJi8lFPaOEltq5ZwtrWv8Pf3eiOhAbHv7osecNA9D1IPSj4BZhihsfAezSXusi37kYeWXB+wIeFmkh1JsY8A=
+  - secure: GY9rDdGSt4NkLahzgBjEQZ4pgmOp9NIhFxM2k1Nn7qTygXpqcsWYCmD87sgG8j1oeeUArJZkeLji2DPbWte6YN9U/7SdvAcDxe+/D8pEf7DwvLQ3817CwGgpy+3AoiR2BQR9mHWJL9ct5o6X7ADckasIbyj0tp1dtGKjG21KTOw=
+  - secure: qjum/AqVqjcgsn9G1sbaJ34n6EKoZPV7GWPNyc0FHcsqxuLxdXhR74tA98lJALXudKNrcIf3/K/9QfeqOvilOr9dI/u6tjVsMoaBp3djtfdU6Ys8ojZcun8BpBJGsPbEtkhazjtVqvMGVccJStxBfX0IgcJi+qnHNMUh4NFRvds=
