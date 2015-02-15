@@ -4,7 +4,8 @@
 
 [![NPM](https://nodei.co/npm/sphere-stock-export.png?downloads=true)](https://www.npmjs.org/package/sphere-stock-export)
 
-[![Build Status](https://secure.travis-ci.org/mmoelli/sphere-stock-export.png?branch=master)](http://travis-ci.org/mmoelli/sphere-stock-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-stock-export)
+[![Build Status](https://secure.travis-ci.org/mmoelli/sphere-stock-export.png?branch=master)](http://travis-ci.org/mmoelli/sphere-stock-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-stock-export) [![Coverage Status](https://coveralls.io/repos/mmoelli/sphere-stock-export/badge.svg?branch=master)](https://coveralls.io/r/mmoelli/sphere-stock-export?branch=master)
+
 This module allows to export stocks to CSV.
 
 ## Getting started
