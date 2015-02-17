@@ -3,6 +3,7 @@ Promise = require 'bluebird'
 FetchStocks = require '../lib/fetchstocks'
 {ExtendedLogger} = require 'sphere-node-utils'
 Config = require '../config'
+SpecHelper = require './helper.spec'
 
 describe 'FetchStocks', ->
 
@@ -11,12 +12,8 @@ describe 'FetchStocks', ->
     @fetchStocks = new FetchStocks @logger, Config
 
   it 'should get the channel Information', (done) ->
-    spyOn(@fetchStocks.client.channels, 'fetch').andCallFake -> Promise.resolve
-      body:
-        results: [
-          {
-            id: '123'
-          }]
+    spyOn(@fetchStocks.client.channels, 'fetch').andCallFake -> Promise.resolve SpecHelper.channelMock()
+
     @fetchStocks._getChannelId()
     .then (result) =>
       expect(result).toEqual '123'
@@ -24,17 +21,14 @@ describe 'FetchStocks', ->
     .catch (e) -> done e
 
   it 'should get the stock Information', (done) ->
-    spyOn(@fetchStocks.client.inventoryEntries, 'fetch').andCallFake -> Promise.resolve
-      body:
-        results: [
-          {
-            sku: '123',
-            quantityOnStock: 5
-          }]
+    spyOn(@fetchStocks.client.inventoryEntries, 'fetch').andCallFake -> Promise.resolve SpecHelper.stocksMock()
+
     @fetchStocks.run()
     .then (result) =>
-      expect(result.body.results.length).toEqual 1
+      expect(result.body.results.length).toEqual 2
       expect(result.body.results[0].sku).toEqual '123'
-      expect(result.body.results[0].quantityOnStock).toEqual 5
+      expect(result.body.results[0].quantityOnStock).toEqual 0
+      expect(result.body.results[1].sku).toEqual '456'
+      expect(result.body.results[1].quantityOnStock).toEqual 6
       done()
     .catch (e) -> done e
