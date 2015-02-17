@@ -71,19 +71,7 @@ ProjectCredentialsConfig.create()
         csvFile = "#{@outputDir}/stocks_#{ts}.csv"
         logger.info "Storing CSV export to '#{csvFile}'."
         fs.writeFileAsync csvFile, data
-      .catch (err) ->
-        logger.error err, "Problem while writing to CSV."
-        process.exit(1)
-      .done()
-    .catch (err) ->
-      logger.error err, "Problem while fetching stock information."
-      process.exit(1)
-    .done()
-  .catch (err) ->
-    logger.error err, "Problem while creating export directory."
-    process.exit(1)
-  .done()
 .catch (err) ->
-  logger.error err, "Problem while creating project credentials."
+  logger.error err, "Problem while creating stock export."
   process.exit(1)
 .done()
