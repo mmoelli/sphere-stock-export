@@ -4,7 +4,7 @@
 
 [![NPM](https://nodei.co/npm/sphere-stock-export.png?downloads=true)](https://www.npmjs.org/package/sphere-stock-export)
 
-[![Build Status](https://secure.travis-ci.org/mmoelli/sphere-stock-export.png?branch=master)](http://travis-ci.org/mmoelli/sphere-stock-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-stock-export) [![Coverage Status](https://coveralls.io/repos/mmoelli/sphere-stock-export/badge.svg?branch=master)](https://coveralls.io/r/mmoelli/sphere-stock-export?branch=master)
+[![Build Status](https://secure.travis-ci.org/sphereio/sphere-stock-export.png?branch=master)](http://travis-ci.org/sphereio/sphere-stock-export) [![NPM version](https://badge.fury.io/js/sphere-stock-export.png)](http://badge.fury.io/js/sphere-stock-export) [![Coverage Status](https://coveralls.io/repos/sphereio/sphere-stock-export/badge.svg?branch=master)](https://coveralls.io/r/sphereio/sphere-stock-export?branch=master)
 
 This module allows to export stocks to CSV.
 
@@ -61,5 +61,5 @@ grunt release:major // major release
 ```
 
 ## License
-Copyright (c) 2014 SPHERE.IO
+Copyright (c) 2015 SPHERE.IO
 Licensed under the [MIT license](LICENSE-MIT).

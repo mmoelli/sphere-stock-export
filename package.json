@@ -2,7 +2,7 @@
   "name": "sphere-stock-export",
   "description": "Export your stock information from SPHERE.IO's inventory into CSV!",
   "version": "0.2.0",
-  "homepage": "https://github.com/mmoelli/sphere-stock-export",
+  "homepage": "https://github.com/sphereio/sphere-stock-export",
   "private": false,
   "author": {
     "name": "Martin Möllmann",
@@ -11,10 +11,10 @@
   "maintainers": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mmoelli/sphere-stock-export.git"
+    "url": "https://github.com/sphereio/sphere-stock-export.git"
   },
   "bugs": {
-    "url": "https://github.com/mmoelli/sphere-stock-export/issues"
+    "url": "https://github.com/sphereio/sphere-stock-export/issues"
   },
   "licenses": [
     {
