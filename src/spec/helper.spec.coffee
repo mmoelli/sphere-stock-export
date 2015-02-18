@@ -20,15 +20,18 @@ module.exports =
         }]
 
   singleStockMock: ->
-    sku: '456',
-    quantityOnStock: 6,
-    channel:
-      obj:
-        key: 'warehouse-1'
+    body:
+      results: [{
+        sku: '456',
+        quantityOnStock: 6,
+        supplyChannel:
+          obj:
+            key: 'warehouse-1'
+      }]
 
   channelMock: ->
     body:
       results: [{
           id: '123',
-          key: 'testChannel'
+          key: 'warehouse-1'
         }]

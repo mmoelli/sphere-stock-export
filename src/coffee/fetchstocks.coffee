@@ -13,12 +13,8 @@ class FetchStocks
       .then (id) =>
         queryString = 'supplyChannel(id="' + id + '")'
         @client.inventoryEntries.where(queryString).all().sort('lastModifiedAt').expand('supplyChannel').fetch()
-        .then (result) ->
-          Promise.resolve(result)
     else
       @client.inventoryEntries.all().sort('lastModifiedAt').expand('supplyChannel').fetch()
-      .then (result) ->
-        Promise.resolve(result)
 
   _getChannelId: ->
     queryString = 'key="' + @channelKey + '"'
