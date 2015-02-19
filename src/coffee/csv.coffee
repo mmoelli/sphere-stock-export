@@ -20,7 +20,7 @@ class CsvMapping
     .value()
 
     console.log "Export #{_.size(rows)} stock entries."
-    header = _.map mappings, (value, key) =>
+    header = _.map mappings, (value, key) ->
       key
 
     @toCSV(header, rows)

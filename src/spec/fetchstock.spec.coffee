@@ -15,7 +15,7 @@ describe 'FetchStocks', ->
     spyOn(@fetchStocks.client.channels, 'fetch').andCallFake -> Promise.resolve SpecHelper.channelMock()
 
     @fetchStocks._getChannelId()
-    .then (result) =>
+    .then (result) ->
       expect(result).toEqual '123'
       done()
     .catch (e) -> done e
@@ -24,7 +24,7 @@ describe 'FetchStocks', ->
     spyOn(@fetchStocks.client.inventoryEntries, 'fetch').andCallFake -> Promise.resolve SpecHelper.stocksMock()
 
     @fetchStocks.run()
-    .then (result) =>
+    .then (result) ->
       expect(result.body.results.length).toEqual 2
       expect(result.body.results[0].sku).toEqual '123'
       expect(result.body.results[0].quantityOnStock).toEqual 0
@@ -33,13 +33,13 @@ describe 'FetchStocks', ->
       done()
     .catch (e) -> done e
 
-  it 'should get the stock Information', (done) ->
+  it 'should get the stock Information for a specific channel only', (done) ->
     spyOn(@fetchStocks, '_getChannelId').andCallFake -> Promise.resolve '123'
     spyOn(@fetchStocks.client.inventoryEntries, 'fetch').andCallFake -> Promise.resolve SpecHelper.singleStockMock()
 
     @fetchStocks.channelKey = "warehouse-1"
     @fetchStocks.run()
-    .then (result) =>
+    .then (result) ->
       expect(result.body.results.length).toEqual 1
       expect(result.body.results[0].sku).toEqual '456'
       expect(result.body.results[0].quantityOnStock).toEqual 6
