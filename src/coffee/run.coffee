@@ -16,6 +16,7 @@ argv = require('optimist')
   .option('excludeEmptyStocks', 'whether to skip empty stocks or not')
   .describe('channelKey', 'when you want to filter stock entries for a special channel key')
   .describe('targetDir', 'the folder where exported files are saved')
+  .describe('targetFile', 'the file where exported stocks are saved')
   .describe('useExportTmpDir', 'whether to use a system tmp folder to store exported files')
   .describe('logLevel', 'log level for file logging')
   .describe('logDir', 'directory to store logs')
@@ -68,7 +69,7 @@ ProjectCredentialsConfig.create()
       csvMapper.mapStocks(result)
       .then (data) ->
         ts = (new Date()).getTime()
-        csvFile = "#{@outputDir}/stocks_#{ts}.csv"
+        csvFile = argv.targetFile or "#{@outputDir}/stocks_#{ts}.csv"
         logger.info "Storing CSV export to '#{csvFile}'."
         fs.writeFileAsync csvFile, data
 .catch (err) ->
