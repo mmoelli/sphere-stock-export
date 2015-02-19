@@ -8,6 +8,4 @@ config.js
 .coveralls.yml
 coverage
 package
-exports
-.npmignore
-.sphere-project-credentials
+sftp-credentials.json
