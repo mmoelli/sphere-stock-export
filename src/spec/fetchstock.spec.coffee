@@ -12,7 +12,7 @@ describe 'FetchStocks', ->
     @fetchStocks = new FetchStocks @logger, Config
 
   it 'should get the channel Information', (done) ->
-    spyOn(@fetchStocks.client.channels, 'fetch').andCallFake -> Promise.resolve SpecHelper.channelMock()
+    spyOn(@fetchStocks.client.channels, 'fetch').and.callFake -> Promise.resolve SpecHelper.channelMock()
 
     @fetchStocks._getChannelId()
     .then (result) ->
@@ -21,7 +21,7 @@ describe 'FetchStocks', ->
     .catch (e) -> done e
 
   it 'should get the stock Information', (done) ->
-    spyOn(@fetchStocks.client.inventoryEntries, 'fetch').andCallFake -> Promise.resolve SpecHelper.stocksMock()
+    spyOn(@fetchStocks.client.inventoryEntries, 'fetch').and.callFake -> Promise.resolve SpecHelper.stocksMock()
 
     @fetchStocks.run()
     .then (result) ->
@@ -34,8 +34,8 @@ describe 'FetchStocks', ->
     .catch (e) -> done e
 
   it 'should get the stock Information for a specific channel only', (done) ->
-    spyOn(@fetchStocks, '_getChannelId').andCallFake -> Promise.resolve '123'
-    spyOn(@fetchStocks.client.inventoryEntries, 'fetch').andCallFake -> Promise.resolve SpecHelper.singleStockMock()
+    spyOn(@fetchStocks, '_getChannelId').and.callFake -> Promise.resolve '123'
+    spyOn(@fetchStocks.client.inventoryEntries, 'fetch').and.callFake -> Promise.resolve SpecHelper.singleStockMock()
 
     @fetchStocks.channelKey = "warehouse-1"
     @fetchStocks.run()
