@@ -8,13 +8,14 @@ class FetchStocks
 
 
   run: ->
+    query = @client.inventoryEntries.all().sort('sku').expand('supplyChannel')
     if @channelKey
       @_getChannelId()
-      .then (id) =>
+      .then (id) ->
         queryString = 'supplyChannel(id="' + id + '")'
-        @client.inventoryEntries.where(queryString).all().sort('lastModifiedAt').expand('supplyChannel').fetch()
+        query.where(queryString).fetch()
     else
-      @client.inventoryEntries.all().sort('lastModifiedAt').expand('supplyChannel').fetch()
+      query.fetch()
 
   _getChannelId: ->
     queryString = 'key="' + @channelKey + '"'
