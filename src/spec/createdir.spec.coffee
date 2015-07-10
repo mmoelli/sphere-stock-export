@@ -17,4 +17,4 @@ describe 'CreateDir', ->
     .then (result) =>
       expect(@testPath)
       done()
-    .catch (e) -> done e
+    .catch done

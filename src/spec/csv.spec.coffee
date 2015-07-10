@@ -20,7 +20,7 @@ describe 'CsvMapping', ->
     .then (result) ->
       expect(result).toEqual expectedCsv
       done()
-    .catch (e) -> done e
+    .catch done
 
   it 'should create the correct csv from the stock information and exclude empty stocks', (done) ->
     expectedCsv =
@@ -35,4 +35,4 @@ describe 'CsvMapping', ->
     .then (result) ->
       expect(result).toEqual expectedCsv
       done()
-    .catch (e) -> done e
+    .catch done
