@@ -33,7 +33,7 @@
     "test": "grunt coverage"
   },
   "dependencies": {
-    "sphere-node-sdk": "1.4.0",
+    "sphere-node-sdk": "1.4.1",
     "sphere-node-utils": "0.7.0",
     "optimist": "0.6.1",
     "tmp": "0.0.25",
