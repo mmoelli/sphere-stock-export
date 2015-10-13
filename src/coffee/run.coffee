@@ -6,6 +6,7 @@ fs = Promise.promisifyAll require('fs')
 CreateDir = require './createdir'
 FetchStocks = require './fetchstocks'
 CsvMapping = require './csv'
+_ = require 'underscore'
 
 argv = require('optimist')
   .usage('Usage: $0 --projectKey [key] --clientId [id] --clientSecret [secret] --logDir [dir] --logLevel [level]')
@@ -46,14 +47,24 @@ if argv.logSilent
   logger.bunyanLogger.trace = -> # noop
   logger.bunyanLogger.debug = -> # noop
 
-ProjectCredentialsConfig.create()
+ensureCredentials = (argv) ->
+  if argv.accessToken
+    Promise.resolve
+      config:
+        project_key: argv.projectKey
+      access_token: argv.accessToken
+  else
+    ProjectCredentialsConfig.create()
+    .then (credentials) ->
+      Promise.resolve
+        config: credentials.enrichCredentials
+          project_key: argv.projectKey
+          client_id: argv.clientId
+          client_secret: argv.clientSecret
+
+ensureCredentials(argv)
 .then (credentials) ->
-  options =
-    config: credentials.enrichCredentials
-      project_key: argv.projectKey
-      client_id: argv.clientId
-      client_secret: argv.clientSecret
-    access_token: argv.accessToken
+  options = _.extend credentials,
     user_agent: "#{package_json.name} - #{package_json.version}"
   options.host = argv.sphereHost if argv.sphereHost
 
