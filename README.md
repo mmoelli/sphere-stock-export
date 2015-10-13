@@ -30,6 +30,7 @@ node lib/run
     --projectKey          your SPHERE.IO project-key                                  [required]
     --clientId            your OAuth client id for the SPHERE.IO API                  [required]
     --clientSecret        your OAuth client secret for the SPHERE.IO API              [required]
+    --accessToken         alternative to clientId and clientSecret, you can provide an OAuth access token
     --sphereHost          SPHERE.IO API host to connect to
     --excludeEmptyStocks  when given, stocks with quantity = 0                        [default: false]
     --channelKey          the specific channel you want to export stocks for
