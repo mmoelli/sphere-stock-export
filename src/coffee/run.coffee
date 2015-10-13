@@ -15,7 +15,9 @@ argv = require('optimist')
   .describe('clientSecret', 'your OAuth client secret for the SPHERE.IO API')
   .describe('accessToken', 'an OAuth access token for the SPHERE.IO API')
   .describe('sphereHost', 'SPHERE.IO API host to connect to')
-  .describe('sphereProtocol', 'SPHERE.IO API protocol to connecto to')
+  .describe('sphereProtocol', 'SPHERE.IO API protocol to connect to')
+  .describe('sphereAuthHost', 'SPHERE.IO OAuth host to connect to')
+  .describe('sphereAuthProtocol', 'SPHERE.IO OAuth protocol to connect to')
   .option('excludeEmptyStocks', 'whether to skip empty stocks or not')
   .describe('channelKey', 'when you want to filter stock entries for a special channel key')
   .describe('targetDir', 'the folder where exported files are saved')
@@ -69,6 +71,10 @@ ensureCredentials(argv)
     user_agent: "#{package_json.name} - #{package_json.version}"
   options.host = argv.sphereHost if argv.sphereHost
   options.protocol = argv.sphereProtocol if argv.sphereProtocol
+  if argv.sphereAuthHost
+    options.oauth_host = argv.sphereAuthHost
+    options.rejectUnauthorized = false
+  options.oauth_protocol = argv.sphereAuthProtocol if argv.sphereAuthProtocol
 
   createDir = new CreateDir logger, argv.targetDir, argv.useExportTmpDir
   fetchStocks = new FetchStocks logger, options, argv.channelKey
