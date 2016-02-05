@@ -34,6 +34,7 @@ node lib/run
     --sphereHost          SPHERE.IO API host to connect to
     --excludeEmptyStocks  when given, stocks with quantity = 0                        [default: false]
     --channelKey          the specific channel you want to export stocks for
+    --queryString         query for stock entries. Can be used instead of or in combination with channel key for more flexibility
     --targetDir           the folder where exported files are saved                   [default: "/exports"]
     --useExportTmpDir     whether to use a system tmp folder to store exported files  [default: false]
     --logLevel            log level for file logging                                  [default: "info"]

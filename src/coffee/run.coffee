@@ -20,6 +20,7 @@ argv = require('optimist')
   .describe('sphereAuthProtocol', 'SPHERE.IO OAuth protocol to connect to')
   .option('excludeEmptyStocks', 'whether to skip empty stocks or not')
   .describe('channelKey', 'when you want to filter stock entries for a special channel key')
+  .describe('queryString', 'query for stock entries. Can be used instead of or in combination with channel key for more flexibility')
   .describe('targetDir', 'the folder where exported files are saved')
   .describe('targetFile', 'the file where exported stocks are saved')
   .describe('useExportTmpDir', 'whether to use a system tmp folder to store exported files')
@@ -77,7 +78,7 @@ ensureCredentials(argv)
   options.oauth_protocol = argv.sphereAuthProtocol if argv.sphereAuthProtocol
 
   createDir = new CreateDir logger, argv.targetDir, argv.useExportTmpDir
-  fetchStocks = new FetchStocks logger, options, argv.channelKey
+  fetchStocks = new FetchStocks logger, options, argv.channelKey, argv.queryString
   csvMapper = new CsvMapping argv.excludeEmptyStocks
 
   createDir.run()
