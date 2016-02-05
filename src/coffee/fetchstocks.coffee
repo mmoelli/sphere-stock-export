@@ -3,19 +3,22 @@ Promise = require 'bluebird'
 
 class FetchStocks
 
-  constructor: (@logger, options = {}, @channelKey) ->
+  constructor: (@logger, options = {}, @channelKey, @queryString) ->
     @client = new SphereClient options
 
 
   run: ->
     query = @client.inventoryEntries.all().sort('sku').expand('supplyChannel')
+    queryString = []
+    if @queryString
+      queryString = @queryString.split(' and ')
     if @channelKey
       @_getChannelId()
       .then (id) ->
-        queryString = 'supplyChannel(id="' + id + '")'
-        query.where(queryString).fetch()
+        queryString.push('supplyChannel(id="' + id + '")')
+        query.where(queryString.join(' and ')).fetch()
     else
-      query.fetch()
+      query.where(queryString.join(' and ')).fetch()
 
   _getChannelId: ->
     queryString = 'key="' + @channelKey + '"'

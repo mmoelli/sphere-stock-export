@@ -33,6 +33,17 @@ describe 'FetchStocks', ->
       done()
     .catch done
 
+  it 'should apply the query string to the query', ->
+
+    @fetchStocks.queryString = "sku=\"123\""
+    spyOn(@fetchStocks.client.inventoryEntries, 'where').andReturn({fetch: ->})
+
+    @fetchStocks.run()
+
+    expect(@fetchStocks.client.inventoryEntries.where)
+    .toHaveBeenCalledWith(@fetchStocks.queryString)
+    @fetchStocks.queryString = ""
+
   it 'should get the stock Information for a specific channel only', (done) ->
     spyOn(@fetchStocks, '_getChannelId').andCallFake -> Promise.resolve '123'
     spyOn(@fetchStocks.client.inventoryEntries, 'fetch').andCallFake -> Promise.resolve SpecHelper.singleStockMock()
