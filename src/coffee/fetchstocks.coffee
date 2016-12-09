@@ -8,7 +8,7 @@ class FetchStocks
 
 
   run: ->
-    query = @client.inventoryEntries.all().sort('sku').expand('supplyChannel')
+    query = @client.inventoryEntries.all().expand('supplyChannel')
     queryString = []
     if @queryString
       queryString = @queryString.split(' and ')
