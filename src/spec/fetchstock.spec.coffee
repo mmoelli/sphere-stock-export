@@ -56,3 +56,11 @@ describe 'FetchStocks', ->
       expect(result.body.results[0].quantityOnStock).toEqual 6
       done()
     .catch done
+
+  it 'should sort by id if it is not overrided', (done) ->
+    sortingParam = ''
+    @fetchStocks.client.inventoryEntries.sort = (path) ->
+      sortingParam = path
+    @fetchStocks.run()
+    expect(sortingParam).toEqual 'id'
+    done()
