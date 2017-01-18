@@ -59,7 +59,7 @@ describe 'FetchStocks', ->
 
   it 'should sort by id if it is not overrided', (done) ->
     sortingParam = ''
-    @fetchStocks.client.inventoryEntries.sort = (path) ->
+    spyOn(@fetchStocks.client.inventoryEntries, 'sort').andCallFake (path) ->
       sortingParam = path
     @fetchStocks.run()
     expect(sortingParam).toEqual 'id'
