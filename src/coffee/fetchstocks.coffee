@@ -8,7 +8,6 @@ class FetchStocks
 
 
   run: ->
-    # Do NOT use custom sorting due to https://github.com/sphereio/sphere-node-sdk/issues/194
     query = @client.inventoryEntries.all().expand('supplyChannel')
     queryString = []
     if @queryString

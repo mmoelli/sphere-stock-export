@@ -57,7 +57,6 @@ describe 'FetchStocks', ->
       done()
     .catch done
 
-  # Due to issue https://github.com/sphereio/sphere-node-sdk/issues/194 we ensure that custom sorting is never used
   it 'should sort by id only', (done) ->
     sortingParam = ''
     spyOn(@fetchStocks.client.inventoryEntries, 'sort').andCallFake (path) ->
