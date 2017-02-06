@@ -56,3 +56,11 @@ describe 'FetchStocks', ->
       expect(result.body.results[0].quantityOnStock).toEqual 6
       done()
     .catch done
+
+  it 'should sort by id only', (done) ->
+    sortingParam = ''
+    spyOn(@fetchStocks.client.inventoryEntries, 'sort').andCallFake (path) ->
+      sortingParam = path
+    @fetchStocks.run()
+    expect(sortingParam).toEqual 'id'
+    done()
