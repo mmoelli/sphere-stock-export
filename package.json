@@ -1,7 +1,7 @@
 {
   "name": "sphere-stock-export",
   "description": "Export your stock information from SPHERE.IO's inventory into CSV!",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://github.com/sphereio/sphere-stock-export",
   "private": false,
   "author": {
