@@ -2,13 +2,13 @@
 
 ## ⛔ [Deprecated], please use the [nodejs repo](https://github.com/commercetools/nodejs) instead
 
-# Stock export (Inventory export)
+# Stock export (Inventories Exporter)
 
 This module allows to export stocks to CSV.
 
 This repo has been deprecated and the code migrated to this [repo](https://github.com/commercetools/nodejs).
 
-**NOTE:** It has also been renamed from `Stock export` to `Inventory Export`
+**NOTE:** It has also been renamed from `Stock export` to `Inventories Exporter`
 
 The documentation about this module can be found [here](https://commercetools.github.io/nodejs/cli/inventories-exporter.html)
 
